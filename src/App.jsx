@@ -717,6 +717,7 @@
 import { Plus, Trash2, Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import InstallPWAButton from './InstallPWAButton';
 
 export default function SBIAppraiserCertificate() {
   const [formData, setFormData] = useState({
@@ -1338,7 +1339,7 @@ const downloadPDF = async () => {
     © {new Date().getFullYear()} VlueWeb. All rights reserved.
   </div>
 </footer>
-
+<InstallPWAButton />
       </div>
       
     );
