@@ -843,7 +843,7 @@ const downloadPDF = async () => {
   return (
     <div className="min-h-screen bg-gray-50 ">
       {/* Input Form Section */}
-      <div className="max-w-6xl mx-auto mb-8 bg-white sm:p-6 rounded-lg shadow-lg">
+      <div className="max-w-6xl mx-auto mb-8 bg-white p-4 sm:p-6 rounded-lg shadow-lg">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-gray-800">Certificate Details Form</h2>
 
         {/* Basic Details */}
