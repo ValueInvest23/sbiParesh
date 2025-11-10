@@ -1296,20 +1296,20 @@ const downloadPDF = async () => {
   {/* Mobile View */}
   <div className="flex flex-col items-center text-center sm:hidden">
     <h2 className="text-lg font-bold tracking-wide hover:text-gray-300 transition-colors duration-300">
-      VlueWeb
+      ValueWeb
     </h2>
     <div className="flex justify-center items-center gap-4 mt-1">
       <a
         href="tel:7203977628"
         className="text-sm font-medium hover:text-gray-300 transition-colors duration-300"
       >
-        Yash Mo: <span className="font-semibold">7203977628</span>
+        Yash Gandhi Ph: <span className="font-semibold">7203977628</span>
       </a>
       <a
         href="tel:9265637794"
         className="text-sm font-medium hover:text-gray-300 transition-colors duration-300"
       >
-        Prit Mo: <span className="font-semibold">9265637794</span>
+        Prit Gandhi Ph: <span className="font-semibold">9265637794</span>
       </a>
     </div>
   </div>
@@ -1320,23 +1320,23 @@ const downloadPDF = async () => {
       href="tel:7203977628"
       className="font-medium hover:text-gray-300 transition-colors duration-300"
     >
-      Yash Mo: <span className="font-semibold">7203977628</span>
+      Yash Gandhi Ph: <span className="font-semibold">7203977628</span>
     </a>
 
     <h2 className="text-lg sm:text-xl font-bold tracking-wide hover:text-gray-300 transition-colors duration-300">
-      VlueWeb
+      ValueWeb
     </h2>
 
     <a
       href="tel:9265637794"
       className="font-medium hover:text-gray-300 transition-colors duration-300"
     >
-      Prit Mo: <span className="font-semibold">9265637794</span>
+      Prit Gandhi Ph: <span className="font-semibold">9265637794</span>
     </a>
   </div>
 
   <div className="mt-2 text-center text-xs text-gray-400 w-full">
-    © {new Date().getFullYear()} VlueWeb. All rights reserved.
+    © {new Date().getFullYear()} ValueWeb. All rights reserved.
   </div>
 </footer>
 <InstallPWAButton />
