@@ -1,0 +1,33 @@
+@import "tailwindcss";
+ /* === Certificate responsiveness === */
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  /* Keep desktop layout but allow horizontal scrolling */
+  .certificate-wrapper {
+    overflow-x: auto !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .certificate-content {
+    transform: none !important; /* disable any scale */
+    width: 210mm !important; /* fixed desktop width */
+    min-height: 297mm !important;
+  }
+}
+
+/* For desktop */
+@media (min-width: 769px) {
+  .certificate-wrapper {
+    overflow: auto;
+  }
+  .certificate-content {
+    transform: scale(0.8);
+  }
+}
+
+img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
