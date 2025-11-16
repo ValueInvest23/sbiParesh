@@ -730,7 +730,8 @@ export default function SBIAppraiserCertificate() {
     residentOf: '',
     date: '',
     place: '',
-    bottomDate: ''
+    bottomDate: '',
+    MobileNo: ''
   });
 
   const [ornaments, setOrnaments] = useState([]);
@@ -767,15 +768,27 @@ export default function SBIAppraiserCertificate() {
     setOrnaments(ornaments.filter((_, i) => i !== index));
   };
 
-  const calculateTotals = () => {
-    return {
-      totalOrnaments: ornaments.reduce((sum, item) => sum + (parseInt(item.noOfOrnaments) || 0), 0),
-      totalGross: ornaments.reduce((sum, item) => sum + (parseFloat(item.grossWeight) || 0), 0).toFixed(2),
-      totalEstimated: ornaments.reduce((sum, item) => sum + (parseFloat(item.estimatedWeight) || 0), 0).toFixed(2),
-      totalNet: ornaments.reduce((sum, item) => sum + (parseFloat(item.netWeight) || 0), 0).toFixed(2),
-      totalAppraised: ornaments.reduce((sum, item) => sum + (parseFloat(item.appraisedValue) || 0), 0).toFixed(2)
-    };
+const calculateTotals = () => {
+  const uniquePurity = [...new Set(ornaments.map(item => item.purity).filter(Boolean))];
+  const uniqueMarketRate = [...new Set(ornaments.map(item => item.marketRate).filter(Boolean))];
+
+  return {
+    totalOrnaments: ornaments.reduce((sum, item) => sum + (parseInt(item.noOfOrnaments) || 0), 0),
+
+    totalGross: ornaments.reduce((sum, item) => sum + (parseFloat(item.grossWeight) || 0), 0).toFixed(2),
+
+    totalEstimated: ornaments.reduce((sum, item) => sum + (parseFloat(item.estimatedWeight) || 0), 0).toFixed(2),
+
+    totalNet: ornaments.reduce((sum, item) => sum + (parseFloat(item.netWeight) || 0), 0).toFixed(2),
+
+    totalAppraised: ornaments.reduce((sum, item) => sum + (parseFloat(item.appraisedValue) || 0), 0).toFixed(2),
+
+    // NEW VALUES
+    uniquePurity: uniquePurity.join(", "),
+    uniqueMarketRate: uniqueMarketRate.join(", ")
   };
+};
+
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -839,7 +852,7 @@ const downloadPDF = async () => {
   pdf.save("SBI_Appraiser_Certificate.pdf");
 };
 
-  const totals = calculateTotals();
+  const total = calculateTotals();
 
   return (
     <div className="min-h-screen bg-gray-50 ">
@@ -857,6 +870,7 @@ const downloadPDF = async () => {
             { label: 'S/W/D of', name: 'guardianName', placeholder: 'Enter guardian name' },
             { label: 'Resident', name: 'resident', placeholder: 'Enter resident status' },
             { label: 'Of (Location)', name: 'residentOf', placeholder: 'Enter location' },
+            { label: 'Mobile No:', name: 'MobileNo', placeholder: 'Enter MobileNo' },
           ].map((field, idx) => (
             <div key={idx}>
               <label className="block text-sm font-semibold mb-2">{field.label}</label>
@@ -1114,7 +1128,7 @@ const downloadPDF = async () => {
       and the exact weight, purity of the metal, and market value of each item as on date are
     </p>
     <p className="mb-1">
-      indicated below.
+      indicated below. Mobile No : <span className='font-bold'>{formData.MobileNo || "......................"}</span>
     </p>
   </div>
 </div>
@@ -1253,8 +1267,8 @@ const downloadPDF = async () => {
           <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalGross.toFixed(3)}</td>
           <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalEstimated.toFixed(3)}</td>
           <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalNet.toFixed(3)}</td>
-          <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
-          <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '10px 4px',fontSize: '9pt'  }}>{total.uniquePurity}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '10px 4px',fontSize: '9pt'  }}>{total.uniqueMarketRate}</td>
           <td className="text-center font-bold" style={{ border: '1px solid black', padding: '10px 4px', fontSize: '9pt' }}>{totals.totalAppraised.toFixed(3)}</td>
           <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
         </tr>
