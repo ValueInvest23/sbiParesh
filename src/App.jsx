@@ -869,7 +869,6 @@ const downloadPDF = async () => {
             { label: 'Sir/Smt Name', name: 'name', placeholder: 'Enter customer name' },
             { label: 'S/W/D of', name: 'guardianName', placeholder: 'Enter guardian name' },
             { label: 'Resident', name: 'resident', placeholder: 'Enter resident status' },
-            { label: 'Of (Location)', name: 'residentOf', placeholder: 'Enter location' },
             { label: 'Mobile No:', name: 'MobileNo', placeholder: 'Enter MobileNo' },
           ].map((field, idx) => (
             <div key={idx}>
