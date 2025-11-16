@@ -1089,11 +1089,11 @@ const downloadPDF = async () => {
         <span className="opacity-50 select-none">...........................................................</span>
         <span
           className={`absolute inset-0 flex justify-center items-center whitespace-nowrap ${
-            formData.residentOf ? 'font-bold tracking-wide' : ''
+            formData.resident ? 'font-bold tracking-wide' : ''
           }`}
           style={{ letterSpacing: '0.5px', paddingBottom: '1px' }}
         >
-          {formData.residentOf || ''}
+          {formData.resident || ''}
         </span>
       </span>
       have been weighed and scrutinized by me on Dt. 
@@ -1235,12 +1235,12 @@ const downloadPDF = async () => {
               <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '10pt' }}>{index + 1}</td>
               <td style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{ornament.description || ''}</td>
               <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{ornament.noOfOrnaments || ''}</td>
-              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{gross || ''}</td>
-              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{estimated || ''}</td>
-              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{net.toFixed(2)}</td>
+              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{gross.toFixed(3) || ''}</td>
+              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{estimated.toFixed(3) || ''}</td>
+              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{net.toFixed(3)}</td>
               <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{ornament.purity || ''}</td>
               <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{ornament.marketRate || ''}</td>
-              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{appraised.toFixed(2)}</td>
+              <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{appraised.toFixed(3)}</td>
               <td className="text-center" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{ornament.remarks || ''}</td>
             </tr>
           );
@@ -1249,13 +1249,13 @@ const downloadPDF = async () => {
         {/* Total row */}
         <tr>
           <td colSpan="2" className="font-bold" style={{ border: '1px solid black', padding: '8px 8px', fontSize: '9pt' }}>Total Ornaments :</td>
-          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalOrnaments.toFixed(2)}</td>
-          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalGross.toFixed(2)}</td>
-          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalEstimated.toFixed(2)}</td>
-          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalNet.toFixed(2)}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalOrnaments.toFixed(0)}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalGross.toFixed(3)}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalEstimated.toFixed(3)}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '8px 4px', fontSize: '9pt' }}>{totals.totalNet.toFixed(3)}</td>
           <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
           <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
-          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '10px 4px', fontSize: '9pt' }}>{totals.totalAppraised.toFixed(2)}</td>
+          <td className="text-center font-bold" style={{ border: '1px solid black', padding: '10px 4px', fontSize: '9pt' }}>{totals.totalAppraised.toFixed(3)}</td>
           <td style={{ border: '1px solid black', padding: '10px 4px' }}></td>
         </tr>
       </>
